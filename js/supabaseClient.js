@@ -10,8 +10,8 @@ import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 // >>> REPLACE THESE TWO VALUES WITH YOUR OWN SUPABASE PROJECT CREDENTIALS <<<
 // Found in: Supabase Dashboard -> Project Settings -> API
 // -----------------------------------------------------------------------------
-const SUPABASE_URL = 'YOUR_SUPABASE_URL';
-const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
+const SUPABASE_URL = 'https://naattursexlswaggslzm.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_VHPRyEhb_64lUT4EX-R3og_QKEp0-hh';
 
 if (SUPABASE_URL === 'YOUR_SUPABASE_URL' || SUPABASE_ANON_KEY === 'YOUR_SUPABASE_ANON_KEY') {
   // Fails loudly and visibly instead of silently breaking every request.
