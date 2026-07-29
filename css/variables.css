@@ -1,0 +1,137 @@
+/* =============================================================================
+   variables.css
+   Design tokens. This file is the ONLY place colors, fonts, spacing, and
+   radii are defined. Every other CSS file consumes these variables and
+   never hardcodes a raw value. Do not redefine tokens elsewhere.
+   ============================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+:root {
+  /* ---- Typography -------------------------------------------------------- */
+  --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.8125rem;
+  --text-base: 0.9375rem;
+  --text-md: 1.0625rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.625rem;
+  --text-2xl: 2.25rem;
+
+  --leading-tight: 1.2;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.7;
+
+  /* ---- Spacing scale ------------------------------------------------------ */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* ---- Radii --------------------------------------------------------------- */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-full: 999px;
+
+  /* ---- Motion --------------------------------------------------------------- */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast: 120ms;
+  --duration-normal: 200ms;
+  --duration-slow: 360ms;
+
+  /* ---- Z-index scale --------------------------------------------------------- */
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-modal: 300;
+  --z-toast: 400;
+  --z-loading: 500;
+}
+
+/* ---- Light theme (default) --------------------------------------------------- */
+:root,
+[data-theme='light'] {
+  --color-bg: #ffffff;
+  --color-bg-secondary: #f6f7f9;
+  --color-bg-tertiary: #eef0f3;
+  --color-surface: #ffffff;
+  --color-surface-hover: #f6f7f9;
+  --color-border: #e3e5e8;
+  --color-border-strong: #d3d6db;
+
+  --color-text-primary: #14171f;
+  --color-text-secondary: #5b6472;
+  --color-text-tertiary: #8a93a3;
+  --color-text-inverse: #ffffff;
+
+  --color-accent: #5e6ad2;
+  --color-accent-hover: #4e59c0;
+  --color-accent-soft: #eceeff;
+  --color-accent-text: #4e59c0;
+
+  --color-success: #2f9e67;
+  --color-success-soft: #e7f7ee;
+  --color-danger: #e5484d;
+  --color-danger-soft: #fdeceb;
+  --color-warning: #b7791f;
+  --color-warning-soft: #fdf3e0;
+
+  --shadow-sm: 0 1px 2px rgba(20, 23, 31, 0.06);
+  --shadow-md: 0 4px 16px rgba(20, 23, 31, 0.08);
+  --shadow-lg: 0 12px 32px rgba(20, 23, 31, 0.12);
+  --shadow-focus: 0 0 0 3px rgba(94, 106, 210, 0.28);
+}
+
+/* ---- Dark theme ---------------------------------------------------------------- */
+[data-theme='dark'] {
+  --color-bg: #0b0d12;
+  --color-bg-secondary: #14171f;
+  --color-bg-tertiary: #1b1f2a;
+  --color-surface: #14171f;
+  --color-surface-hover: #1b1f2a;
+  --color-border: #262b38;
+  --color-border-strong: #333a4a;
+
+  --color-text-primary: #e6e8ec;
+  --color-text-secondary: #9aa2b1;
+  --color-text-tertiary: #626b7a;
+  --color-text-inverse: #0b0d12;
+
+  --color-accent: #6e79e8;
+  --color-accent-hover: #7d87ed;
+  --color-accent-soft: #232a4d;
+  --color-accent-text: #a6aef2;
+
+  --color-success: #3dbb7d;
+  --color-success-soft: #123324;
+  --color-danger: #ef6a6e;
+  --color-danger-soft: #3a1a1c;
+  --color-warning: #dba13a;
+  --color-warning-soft: #3a2c11;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.32);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.5);
+  --shadow-focus: 0 0 0 3px rgba(110, 121, 232, 0.35);
+}
+
+/* Respect OS-level reduced motion preference everywhere. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,46 @@
+/* =============================================================================
+   pages.css
+   Page-specific rules only. Each page gets its own clearly-marked section
+   below. Never edit a previous page's section when adding a new one —
+   append instead, to keep the frozen architecture stable.
+   ============================================================================= */
+
+/* ---- index.html (Login) ------------------------------------------------------- */
+
+.login-toggle-theme {
+  position: fixed;
+  top: var(--space-5);
+  right: var(--space-5);
+  z-index: var(--z-sticky);
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.login-remember-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.login-remember-row a {
+  font-size: var(--text-sm);
+  color: var(--color-accent);
+  font-weight: 600;
+}
+.login-remember-row a:hover {
+  text-decoration: underline;
+}
+
+/* Forgot-password inline panel, swapped in place of the login form. */
+.auth-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+/* Additional page sections (dashboard, attendance, employees, etc.) will be
+   appended below this line in later batches. */
