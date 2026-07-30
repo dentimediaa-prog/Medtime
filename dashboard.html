@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dashboard · TimeKeep</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235E6AD2' stroke-width='2'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 7v5l3 2'/%3E%3C/svg%3E" />
+<link rel="stylesheet" href="css/variables.css" />
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/components.css" />
+<link rel="stylesheet" href="css/layout.css" />
+<link rel="stylesheet" href="css/pages.css" />
+</head>
+<body>
+
+  <div id="app-loading">
+    <div class="spinner" aria-hidden="true"></div>
+    <span>Loading TimeKeep…</span>
+  </div>
+
+  <div id="app" hidden>
+    <div class="app-shell">
+
+      <div id="sidebar-backdrop" class="sidebar-backdrop"></div>
+
+      <aside id="sidebar" class="sidebar">
+        <div class="sidebar-logo">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="9"/>
+            <path d="M12 7v5l3 2"/>
+          </svg>
+          <span>TimeKeep</span>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="dashboard.html" id="sidebar-link-dashboard" class="sidebar-link is-active">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+            <span>Dashboard</span>
+          </a>
+          <a href="attendance.html" id="sidebar-link-attendance" class="sidebar-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            <span>Attendance</span>
+          </a>
+          <a href="employees.html" id="sidebar-link-employees" class="sidebar-link" data-admin-only>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+            <span>Employees</span>
+          </a>
+          <a href="leave.html" id="sidebar-link-leave" class="sidebar-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            <span>Leave</span>
+          </a>
+          <a href="reports.html" id="sidebar-link-reports" class="sidebar-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+            <span>Reports</span>
+          </a>
+          <a href="payroll.html" id="sidebar-link-payroll" class="sidebar-link" data-admin-only>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+            <span>Payroll</span>
+          </a>
+          <a href="settings.html" id="sidebar-link-settings" class="sidebar-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.65 1.65 0 004.6 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06A1.65 1.65 0 009 4.6a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+            <span>Settings</span>
+          </a>
+        </nav>
+
+        <div class="sidebar-footer">
+          <div class="sidebar-user">
+            <div id="sidebar-avatar-initials" class="avatar">–</div>
+            <div class="sidebar-user-info">
+              <div id="sidebar-user-name" class="sidebar-user-name">Loading…</div>
+              <div id="sidebar-user-role" class="sidebar-user-role">&nbsp;</div>
+            </div>
+          </div>
+          <button id="logout-btn" class="btn btn-ghost btn-sm" type="button" aria-label="Log out">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          </button>
+        </div>
+      </aside>
+
+      <div class="main-content">
+        <header class="topbar">
+          <div style="display:flex; align-items:center; gap: var(--space-3);">
+            <button id="menu-toggle-btn" class="menu-toggle" type="button" aria-label="Open menu">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+            <div class="topbar-title">
+              <h1>Dashboard</h1>
+            </div>
+          </div>
+          <div class="topbar-actions">
+            <button id="theme-toggle-btn" class="btn btn-ghost btn-sm" type="button" aria-label="Toggle dark mode">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+            </button>
+          </div>
+        </header>
+
+        <main class="page-content">
+
+          <div id="profile-error-alert" class="alert alert-danger" hidden style="margin-bottom: var(--space-5);"></div>
+
+          <div class="dashboard-header-row">
+            <div class="dashboard-greeting">
+              <h1 id="dashboard-greeting">Welcome back</h1>
+              <p class="text-secondary" id="dashboard-greeting-sub">Here's what's happening today.</p>
+            </div>
+            <div class="card dashboard-clock-card">
+              <span id="dashboard-clock-time" class="time mono">00:00:00</span>
+              <span id="dashboard-clock-date" class="date">Loading date…</span>
+            </div>
+          </div>
+
+          <!-- Profile card -->
+          <section class="card profile-card">
+            <div id="profile-avatar-initials" class="profile-avatar-lg">–</div>
+            <div class="profile-card-main">
+              <div class="profile-card-name-row">
+                <h2 id="profile-full-name">Loading…</h2>
+                <span id="profile-role-badge" class="badge badge-neutral">–</span>
+              </div>
+              <p class="text-secondary" id="profile-email">&nbsp;</p>
+
+              <div class="profile-detail-grid">
+                <div class="profile-detail-item">
+                  <span class="profile-detail-label">Department</span>
+                  <span id="profile-department" class="profile-detail-value">–</span>
+                </div>
+                <div class="profile-detail-item">
+                  <span class="profile-detail-label">Job title</span>
+                  <span id="profile-job-title" class="profile-detail-value">–</span>
+                </div>
+                <div class="profile-detail-item">
+                  <span class="profile-detail-label">Phone</span>
+                  <span id="profile-phone" class="profile-detail-value">–</span>
+                </div>
+                <div class="profile-detail-item">
+                  <span class="profile-detail-label">Hire date</span>
+                  <span id="profile-hire-date" class="profile-detail-value">–</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Statistics cards -->
+          <div class="grid grid-cols-4">
+            <div class="card stat-card">
+              <div class="stat-card-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+              </div>
+              <div class="stat-value">—</div>
+              <div class="stat-label">Hours this week</div>
+              <div class="stat-caption">Available once attendance tracking is enabled.</div>
+            </div>
+            <div class="card stat-card">
+              <div class="stat-card-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              </div>
+              <div class="stat-value">—</div>
+              <div class="stat-label">Attendance rate</div>
+              <div class="stat-caption">Available once attendance tracking is enabled.</div>
+            </div>
+            <div class="card stat-card">
+              <div class="stat-card-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+              </div>
+              <div class="stat-value">—</div>
+              <div class="stat-label">Leave balance</div>
+              <div class="stat-caption">Available once leave tracking is enabled.</div>
+            </div>
+            <div class="card stat-card" data-admin-only>
+              <div class="stat-card-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+              </div>
+              <div class="stat-value">—</div>
+              <div class="stat-label">Team size</div>
+              <div class="stat-caption">Available once employee records are enabled.</div>
+            </div>
+          </div>
+
+          <!-- Quick actions -->
+          <section class="card quick-actions-card">
+            <h3>Quick actions</h3>
+            <div class="quick-actions-grid">
+              <a class="quick-action-btn" href="attendance.html" data-employee-only>
+                <span class="quick-action-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                </span>
+                <span>Clock in / out</span>
+              </a>
+              <a class="quick-action-btn" href="leave.html" data-employee-only>
+                <span class="quick-action-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                </span>
+                <span>Request leave</span>
+              </a>
+              <a class="quick-action-btn" href="attendance.html" data-admin-only>
+                <span class="quick-action-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+                </span>
+                <span>View team attendance</span>
+              </a>
+              <a class="quick-action-btn" href="employees.html" data-admin-only>
+                <span class="quick-action-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                </span>
+                <span>Manage employees</span>
+              </a>
+              <a class="quick-action-btn" href="leave.html" data-admin-only>
+                <span class="quick-action-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                </span>
+                <span>Review leave requests</span>
+              </a>
+              <a class="quick-action-btn" href="reports.html">
+                <span class="quick-action-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M18 17V9"/></svg>
+                </span>
+                <span>View reports</span>
+              </a>
+              <a class="quick-action-btn" href="settings.html" data-employee-only>
+                <span class="quick-action-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg>
+                </span>
+                <span>Update profile</span>
+              </a>
+            </div>
+          </section>
+
+          <!-- Recent attendance + Leave placeholders -->
+          <div class="dashboard-panels-grid">
+            <section class="card panel-card">
+              <div class="panel-card-header">
+                <h3>Recent attendance</h3>
+              </div>
+              <div class="empty-state">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                <h3>No attendance records yet</h3>
+                <p>Your clock-in history will show up here once the attendance module is enabled.</p>
+              </div>
+            </section>
+
+            <section class="card panel-card">
+              <div class="panel-card-header">
+                <h3>Leave</h3>
+              </div>
+              <div class="empty-state">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                <h3>No leave requests yet</h3>
+                <p>Submitted and reviewed leave requests will show up here once the leave module is enabled.</p>
+              </div>
+            </section>
+          </div>
+
+        </main>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast-region" role="status" aria-live="polite"></div>
+
+  <script type="module" src="js/pages/dashboard.page.js"></script>
+</body>
+</html>
