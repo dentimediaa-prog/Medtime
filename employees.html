@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Employees · TimeKeep</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235E6AD2' stroke-width='2'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 7v5l3 2'/%3E%3C/svg%3E" />
+<link rel="stylesheet" href="css/variables.css" />
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/components.css" />
+<link rel="stylesheet" href="css/layout.css" />
+<link rel="stylesheet" href="css/pages.css" />
+</head>
+<body>
+
+  <div id="app-loading">
+    <div class="spinner" aria-hidden="true"></div>
+    <span>Loading TimeKeep…</span>
+  </div>
+
+  <div id="app" hidden>
+    <div class="app-shell">
+
+      <div id="sidebar-backdrop" class="sidebar-backdrop"></div>
+
+      <aside id="sidebar" class="sidebar">
+        <div class="sidebar-logo">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="9"/>
+            <path d="M12 7v5l3 2"/>
+          </svg>
+          <span>TimeKeep</span>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="dashboard.html" id="sidebar-link-dashboard" class="sidebar-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+            <span>Dashboard</span>
+          </a>
+          <a href="attendance.html" id="sidebar-link-attendance" class="sidebar-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            <span>Attendance</span>
+          </a>
+          <a href="employees.html" id="sidebar-link-employees" class="sidebar-link is-active" data-admin-only>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+            <span>Employees</span>
+          </a>
+          <a href="leave.html" id="sidebar-link-leave" class="sidebar-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            <span>Leave</span>
+          </a>
+          <a href="reports.html" id="sidebar-link-reports" class="sidebar-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+            <span>Reports</span>
+          </a>
+          <a href="payroll.html" id="sidebar-link-payroll" class="sidebar-link" data-admin-only>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+            <span>Payroll</span>
+          </a>
+          <a href="settings.html" id="sidebar-link-settings" class="sidebar-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.65 1.65 0 004.6 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06A1.65 1.65 0 009 4.6a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+            <span>Settings</span>
+          </a>
+        </nav>
+
+        <div class="sidebar-footer">
+          <div class="sidebar-user">
+            <div id="sidebar-avatar-initials" class="avatar">–</div>
+            <div class="sidebar-user-info">
+              <div id="sidebar-user-name" class="sidebar-user-name">Loading…</div>
+              <div id="sidebar-user-role" class="sidebar-user-role">&nbsp;</div>
+            </div>
+          </div>
+          <button id="logout-btn" class="btn btn-ghost btn-sm" type="button" aria-label="Log out">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          </button>
+        </div>
+      </aside>
+
+      <div class="main-content">
+        <header class="topbar">
+          <div style="display:flex; align-items:center; gap: var(--space-3);">
+            <button id="menu-toggle-btn" class="menu-toggle" type="button" aria-label="Open menu">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+            <div class="topbar-title">
+              <h1>Employees</h1>
+            </div>
+          </div>
+          <div class="topbar-actions">
+            <button id="employees-add-btn" class="btn btn-primary btn-sm" type="button">Add employee</button>
+            <button id="theme-toggle-btn" class="btn btn-ghost btn-sm" type="button" aria-label="Toggle dark mode">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+            </button>
+          </div>
+        </header>
+
+        <main class="page-content">
+
+          <div id="employees-alert" class="alert alert-danger" hidden style="margin-bottom: var(--space-5);"></div>
+
+          <section class="card history-card">
+            <div class="employees-toolbar">
+              <input class="input" type="text" id="employees-search-input" placeholder="Search by name or email…" />
+              <select class="input" id="employees-role-filter">
+                <option value="">All roles</option>
+                <option value="admin">Admin</option>
+                <option value="employee">Employee</option>
+              </select>
+              <select class="input" id="employees-status-filter">
+                <option value="">All statuses</option>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+              </select>
+              <div class="employees-toolbar-spacer"></div>
+            </div>
+
+            <div id="employees-empty" class="empty-state" hidden>
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+              <h3>No employees found</h3>
+              <p>Try a different search or filter, or add a new employee.</p>
+            </div>
+
+            <div id="employees-table-wrap" class="table-wrap" hidden>
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Employee</th>
+                    <th>Role</th>
+                    <th>Department</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="employees-table-body"></tbody>
+              </table>
+            </div>
+
+            <div class="employees-pagination">
+              <span id="employees-pagination-info" class="employees-pagination-info">–</span>
+              <div style="display:flex; gap: var(--space-2);">
+                <button id="employees-prev-btn" class="btn btn-secondary btn-sm" type="button">Previous</button>
+                <button id="employees-next-btn" class="btn btn-secondary btn-sm" type="button">Next</button>
+              </div>
+            </div>
+          </section>
+
+        </main>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add / Edit employee modal -->
+  <div id="employee-modal-overlay" class="modal-overlay" hidden>
+    <div class="modal" style="max-width: 520px;">
+      <h3 id="employee-modal-title" style="margin-bottom: var(--space-4);">Add employee</h3>
+      <div id="employee-modal-alert" class="alert alert-danger" hidden style="margin-bottom: var(--space-4);"></div>
+
+      <div class="employee-modal-scroll">
+        <form id="employee-form" novalidate>
+          <div class="field" id="employee-email-field" style="margin-bottom: var(--space-4);">
+            <label class="field-label" for="employee-email">Email</label>
+            <input class="input" type="email" id="employee-email" autocomplete="off" />
+            <span class="field-error"></span>
+          </div>
+
+          <div class="field" id="employee-password-field" style="margin-bottom: var(--space-4);">
+            <label class="field-label" for="employee-password">Temporary password</label>
+            <input class="input" type="password" id="employee-password" autocomplete="new-password" placeholder="At least 8 characters" />
+            <span class="field-hint">Share this with the employee securely. They can change it via "Forgot password" any time.</span>
+            <span class="field-error"></span>
+          </div>
+
+          <div class="field" id="employee-fullname-field" style="margin-bottom: var(--space-4);">
+            <label class="field-label" for="employee-fullname">Full name</label>
+            <input class="input" type="text" id="employee-fullname" />
+            <span class="field-error"></span>
+          </div>
+
+          <div class="employee-modal-grid" style="margin-bottom: var(--space-4);">
+            <div class="field" id="employee-role-field">
+              <label class="field-label" for="employee-role-select">Role</label>
+              <select class="input" id="employee-role-select">
+                <option value="employee">Employee</option>
+                <option value="admin">Admin</option>
+              </select>
+              <span class="field-error"></span>
+            </div>
+            <div class="field" id="employee-department-field">
+              <label class="field-label" for="employee-department">Department</label>
+              <input class="input" type="text" id="employee-department" />
+            </div>
+          </div>
+
+          <div class="employee-modal-grid" style="margin-bottom: var(--space-4);">
+            <div class="field" id="employee-jobtitle-field">
+              <label class="field-label" for="employee-jobtitle">Job title</label>
+              <input class="input" type="text" id="employee-jobtitle" />
+            </div>
+            <div class="field" id="employee-phone-field">
+              <label class="field-label" for="employee-phone">Phone</label>
+              <input class="input" type="text" id="employee-phone" />
+            </div>
+          </div>
+
+          <div class="field" id="employee-hiredate-field" style="margin-bottom: var(--space-2);">
+            <label class="field-label" for="employee-hiredate">Hire date</label>
+            <input class="input" type="date" id="employee-hiredate" />
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-actions">
+        <button id="employee-modal-cancel-btn" class="btn btn-secondary" type="button">Cancel</button>
+        <button id="employee-modal-submit-btn" class="btn btn-primary" type="button">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- View employee profile modal (read-only) -->
+  <div id="view-modal-overlay" class="modal-overlay" hidden>
+    <div class="modal" style="max-width: 480px;">
+      <h3 style="margin-bottom: var(--space-4);">Employee profile</h3>
+
+      <div class="view-field">
+        <span class="label">Full name</span>
+        <span id="view-fullname" class="value">–</span>
+      </div>
+      <div class="view-field">
+        <span class="label">Email</span>
+        <span id="view-email" class="value">–</span>
+      </div>
+      <div class="view-field">
+        <span class="label">Role</span>
+        <span id="view-role" class="value">–</span>
+      </div>
+      <div class="view-field">
+        <span class="label">Department</span>
+        <span id="view-department" class="value">–</span>
+      </div>
+      <div class="view-field">
+        <span class="label">Job title</span>
+        <span id="view-jobtitle" class="value">–</span>
+      </div>
+      <div class="view-field">
+        <span class="label">Phone</span>
+        <span id="view-phone" class="value">–</span>
+      </div>
+      <div class="view-field">
+        <span class="label">Hire date</span>
+        <span id="view-hiredate" class="value">–</span>
+      </div>
+      <div class="view-field">
+        <span class="label">Status</span>
+        <span id="view-status" class="value">–</span>
+      </div>
+
+      <div class="modal-actions">
+        <button id="view-modal-close-btn" class="btn btn-secondary" type="button">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast-region" role="status" aria-live="polite"></div>
+
+  <script type="module" src="js/pages/employees.page.js"></script>
+</body>
+</html>
