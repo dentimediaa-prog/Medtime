@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Payroll · TimeKeep</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235E6AD2' stroke-width='2'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 7v5l3 2'/%3E%3C/svg%3E" />
+<link rel="stylesheet" href="css/variables.css" />
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/components.css" />
+<link rel="stylesheet" href="css/layout.css" />
+<link rel="stylesheet" href="css/pages.css" />
+</head>
+<body>
+
+  <div id="app-loading">
+    <div class="spinner" aria-hidden="true"></div>
+    <span>Loading TimeKeep…</span>
+  </div>
+
+  <div id="app" hidden>
+    <div class="app-shell">
+
+      <div id="sidebar-backdrop" class="sidebar-backdrop"></div>
+
+      <aside id="sidebar" class="sidebar">
+        <div class="sidebar-logo">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="9"/>
+            <path d="M12 7v5l3 2"/>
+          </svg>
+          <span>TimeKeep</span>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="dashboard.html" id="sidebar-link-dashboard" class="sidebar-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+            <span>Dashboard</span>
+          </a>
+          <a href="attendance.html" id="sidebar-link-attendance" class="sidebar-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            <span>Attendance</span>
+          </a>
+          <a href="employees.html" id="sidebar-link-employees" class="sidebar-link" data-admin-only>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+            <span>Employees</span>
+          </a>
+          <a href="leave.html" id="sidebar-link-leave" class="sidebar-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            <span>Leave</span>
+          </a>
+          <a href="reports.html" id="sidebar-link-reports" class="sidebar-link" data-admin-only>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+            <span>Reports</span>
+          </a>
+          <a href="payroll.html" id="sidebar-link-payroll" class="sidebar-link is-active" data-admin-only>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+            <span>Payroll</span>
+          </a>
+          <a href="settings.html" id="sidebar-link-settings" class="sidebar-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.65 1.65 0 004.6 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06A1.65 1.65 0 009 4.6a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+            <span>Settings</span>
+          </a>
+        </nav>
+
+        <div class="sidebar-footer">
+          <div class="sidebar-user">
+            <div id="sidebar-avatar-initials" class="avatar">–</div>
+            <div class="sidebar-user-info">
+              <div id="sidebar-user-name" class="sidebar-user-name">Loading…</div>
+              <div id="sidebar-user-role" class="sidebar-user-role">&nbsp;</div>
+            </div>
+          </div>
+          <button id="logout-btn" class="btn btn-ghost btn-sm" type="button" aria-label="Log out">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          </button>
+        </div>
+      </aside>
+
+      <div class="main-content">
+        <header class="topbar">
+          <div style="display:flex; align-items:center; gap: var(--space-3);">
+            <button id="menu-toggle-btn" class="menu-toggle" type="button" aria-label="Open menu">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+            <div class="topbar-title">
+              <h1>Payroll</h1>
+            </div>
+          </div>
+          <div class="topbar-actions">
+            <button id="theme-toggle-btn" class="btn btn-ghost btn-sm" type="button" aria-label="Toggle dark mode">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+            </button>
+          </div>
+        </header>
+
+        <main class="page-content">
+
+          <div id="payroll-alert" class="alert alert-danger" hidden style="margin-bottom: var(--space-5);"></div>
+
+          <!-- Filters + Generate -->
+          <section class="card payroll-filters-card">
+            <div class="payroll-filters-grid">
+              <div class="field">
+                <label class="field-label" for="payroll-month-select">Month</label>
+                <select class="input" id="payroll-month-select">
+                  <option value="0">January</option>
+                  <option value="1">February</option>
+                  <option value="2">March</option>
+                  <option value="3">April</option>
+                  <option value="4">May</option>
+                  <option value="5">June</option>
+                  <option value="6">July</option>
+                  <option value="7">August</option>
+                  <option value="8">September</option>
+                  <option value="9">October</option>
+                  <option value="10">November</option>
+                  <option value="11">December</option>
+                </select>
+              </div>
+              <div class="field">
+                <label class="field-label" for="payroll-year-select">Year</label>
+                <select class="input" id="payroll-year-select"></select>
+              </div>
+              <div class="field">
+                <label class="field-label" for="payroll-employee-filter">Employee</label>
+                <select class="input" id="payroll-employee-filter">
+                  <option value="">All employees</option>
+                </select>
+              </div>
+              <div class="field">
+                <label class="field-label" for="payroll-department-filter">Department</label>
+                <select class="input" id="payroll-department-filter">
+                  <option value="">All departments</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="payroll-filters-actions">
+              <button id="generate-payroll-btn" class="btn btn-primary" type="button">Generate payroll</button>
+            </div>
+            <p class="reports-filters-hint">Generating creates or refreshes a draft record per matching employee for the selected month. Existing bonus/penalty/status are kept.</p>
+          </section>
+
+          <!-- Hourly rates -->
+          <section class="card rates-card">
+            <h3 style="margin-bottom: var(--space-3);">Employee hourly rates</h3>
+            <div id="rates-empty" class="empty-state" hidden>
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+              <h3>No active employees</h3>
+              <p>Add employees before running payroll.</p>
+            </div>
+            <div id="rates-list"></div>
+          </section>
+
+          <!-- Payroll history -->
+          <section class="card payroll-history-card">
+            <div class="payroll-history-header">
+              <h3>Payroll history</h3>
+              <div class="payroll-export-actions">
+                <button id="export-csv-btn" class="btn btn-secondary btn-sm" type="button">Export CSV</button>
+                <button id="export-excel-btn" class="btn btn-secondary btn-sm" type="button">Export Excel</button>
+              </div>
+            </div>
+
+            <div id="payroll-history-empty" class="empty-state">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+              <h3>No payroll records for these filters</h3>
+              <p>Generate payroll above, or widen your filters.</p>
+            </div>
+
+            <div id="payroll-history-table-wrap" class="table-wrap" hidden>
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Employee</th>
+                    <th>Period</th>
+                    <th>Basic</th>
+                    <th>Overtime</th>
+                    <th>Leave Ded.</th>
+                    <th>Bonus</th>
+                    <th>Penalty</th>
+                    <th>Gross</th>
+                    <th>Tax</th>
+                    <th>Insurance</th>
+                    <th>Net</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="payroll-history-table-body"></tbody>
+              </table>
+            </div>
+          </section>
+
+        </main>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit breakdown modal -->
+  <div id="payroll-edit-modal-overlay" class="modal-overlay" hidden>
+    <div class="modal" style="max-width: 440px;">
+      <h3 style="margin-bottom: var(--space-4);">Edit payroll breakdown</h3>
+      <div id="payroll-edit-alert" class="alert alert-danger" hidden style="margin-bottom: var(--space-4);"></div>
+
+      <div id="payroll-edit-summary" class="payroll-summary-box"></div>
+
+      <div class="employee-modal-grid" style="margin-bottom: var(--space-4);">
+        <div class="field">
+          <label class="field-label" for="payroll-edit-bonus">Bonus</label>
+          <input class="input" type="number" step="0.01" min="0" id="payroll-edit-bonus" />
+        </div>
+        <div class="field">
+          <label class="field-label" for="payroll-edit-penalty">Penalty</label>
+          <input class="input" type="number" step="0.01" min="0" id="payroll-edit-penalty" />
+        </div>
+      </div>
+      <div class="employee-modal-grid" style="margin-bottom: var(--space-4);">
+        <div class="field">
+          <label class="field-label" for="payroll-edit-tax">Tax</label>
+          <input class="input" type="number" step="0.01" min="0" id="payroll-edit-tax" />
+        </div>
+        <div class="field">
+          <label class="field-label" for="payroll-edit-insurance">Insurance</label>
+          <input class="input" type="number" step="0.01" min="0" id="payroll-edit-insurance" />
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button id="payroll-edit-cancel-btn" class="btn btn-secondary" type="button">Cancel</button>
+        <button id="payroll-edit-save-btn" class="btn btn-primary" type="button">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Printable payslip (hidden on screen, shown only when printing) -->
+  <div id="payslip-print-area" class="payslip-print-area">
+    <div class="payslip-header">
+      <div>
+        <h2 id="payslip-org-name">TimeKeep</h2>
+        <div id="payslip-period"></div>
+      </div>
+      <div style="text-align:right;">
+        <div id="payslip-employee-name" style="font-weight:700;"></div>
+        <div id="payslip-employee-dept"></div>
+      </div>
+    </div>
+    <div class="payslip-line"><span>Basic salary</span><span id="payslip-basic"></span></div>
+    <div class="payslip-line"><span>Overtime</span><span id="payslip-overtime"></span></div>
+    <div class="payslip-line"><span>Bonus</span><span id="payslip-bonus"></span></div>
+    <div class="payslip-line"><span>Leave deduction</span><span id="payslip-leave-deduction"></span></div>
+    <div class="payslip-line"><span>Penalty</span><span id="payslip-penalty"></span></div>
+    <div class="payslip-line"><span>Gross pay</span><span id="payslip-gross"></span></div>
+    <div class="payslip-line"><span>Tax</span><span id="payslip-tax"></span></div>
+    <div class="payslip-line"><span>Insurance</span><span id="payslip-insurance"></span></div>
+    <div class="payslip-line net"><span>Net pay</span><span id="payslip-net"></span></div>
+    <p style="margin-top: 16px; font-size: 12px;">Status: <span id="payslip-status"></span></p>
+  </div>
+
+  <div id="toast-region" role="status" aria-live="polite"></div>
+
+  <script type="module" src="js/pages/payroll.page.js"></script>
+</body>
+</html>
