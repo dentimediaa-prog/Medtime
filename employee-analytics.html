@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Employee Analytics · TimeKeep</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235E6AD2' stroke-width='2'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 7v5l3 2'/%3E%3C/svg%3E" />
+<link rel="stylesheet" href="css/variables.css" />
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/components.css" />
+<link rel="stylesheet" href="css/layout.css" />
+<link rel="stylesheet" href="css/pages.css" />
+</head>
+<body>
+
+  <div id="app-loading">
+    <div class="spinner" aria-hidden="true"></div>
+    <span>Loading TimeKeep…</span>
+  </div>
+
+  <div id="app" hidden>
+    <div class="app-shell">
+
+      <div id="sidebar-backdrop" class="sidebar-backdrop"></div>
+
+      <aside id="sidebar" class="sidebar">
+        <div class="sidebar-logo">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="9"/>
+            <path d="M12 7v5l3 2"/>
+          </svg>
+          <span>TimeKeep</span>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="dashboard.html" id="sidebar-link-dashboard" class="sidebar-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+            <span>Dashboard</span>
+          </a>
+          <a href="attendance.html" id="sidebar-link-attendance" class="sidebar-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            <span>Attendance</span>
+          </a>
+          <a href="employees.html" id="sidebar-link-employees" class="sidebar-link is-active" data-admin-only>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+            <span>Employees</span>
+          </a>
+          <a href="leave.html" id="sidebar-link-leave" class="sidebar-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            <span>Leave</span>
+          </a>
+          <a href="reports.html" id="sidebar-link-reports" class="sidebar-link" data-admin-only>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+            <span>Reports</span>
+          </a>
+          <a href="payroll.html" id="sidebar-link-payroll" class="sidebar-link" data-admin-only>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+            <span>Payroll</span>
+          </a>
+          <a href="settings.html" id="sidebar-link-settings" class="sidebar-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.65 1.65 0 004.6 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06A1.65 1.65 0 009 4.6a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+            <span>Settings</span>
+          </a>
+        </nav>
+
+        <div class="sidebar-footer">
+          <div class="sidebar-user">
+            <div id="sidebar-avatar-initials" class="avatar">–</div>
+            <div class="sidebar-user-info">
+              <div id="sidebar-user-name" class="sidebar-user-name">Loading…</div>
+              <div id="sidebar-user-role" class="sidebar-user-role">&nbsp;</div>
+            </div>
+          </div>
+          <button id="logout-btn" class="btn btn-ghost btn-sm" type="button" aria-label="Log out">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          </button>
+        </div>
+      </aside>
+
+      <div class="main-content">
+        <header class="topbar">
+          <div style="display:flex; align-items:center; gap: var(--space-3);">
+            <button id="menu-toggle-btn" class="menu-toggle" type="button" aria-label="Open menu">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+            <div class="topbar-title">
+              <h1>Employee Analytics</h1>
+            </div>
+          </div>
+          <div class="topbar-actions">
+            <button id="theme-toggle-btn" class="btn btn-ghost btn-sm" type="button" aria-label="Toggle dark mode">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+            </button>
+          </div>
+        </header>
+
+        <main class="page-content">
+
+          <a href="employees.html" class="analytics-back-link">← Back to Employees</a>
+
+          <div id="analytics-alert" class="alert alert-danger" hidden style="margin-bottom: var(--space-5);"></div>
+
+          <h2 id="print-analytics-title"></h2>
+
+          <div id="analytics-content" hidden>
+
+            <!-- SECTION 1: Employee Information -->
+            <section class="card analytics-info-card">
+              <div id="emp-avatar-initials" class="analytics-avatar">–</div>
+              <div class="analytics-info-main">
+                <div class="analytics-info-name-row">
+                  <h2 id="emp-full-name">Loading…</h2>
+                  <span id="emp-role-badge" class="badge badge-neutral">–</span>
+                  <span id="emp-status-badge" class="badge badge-neutral">–</span>
+                </div>
+                <p class="text-secondary" id="emp-email">&nbsp;</p>
+
+                <div class="profile-detail-grid">
+                  <div class="profile-detail-item">
+                    <span class="profile-detail-label">Department</span>
+                    <span id="emp-department" class="profile-detail-value">–</span>
+                  </div>
+                  <div class="profile-detail-item">
+                    <span class="profile-detail-label">Job title</span>
+                    <span id="emp-job-title" class="profile-detail-value">–</span>
+                  </div>
+                  <div class="profile-detail-item">
+                    <span class="profile-detail-label">Hire date</span>
+                    <span id="emp-hire-date" class="profile-detail-value">–</span>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- SECTION 2: Summary Cards -->
+            <h3 class="analytics-section-title">Summary</h3>
+            <div class="analytics-stats-grid">
+              <div class="card stat-card">
+                <div class="stat-value" id="stat-total-worked-hours">–</div>
+                <div class="stat-label">Total worked hours</div>
+              </div>
+              <div class="card stat-card">
+                <div class="stat-value" id="stat-total-attendance-days">–</div>
+                <div class="stat-label">Total attendance days</div>
+              </div>
+              <div class="card stat-card">
+                <div class="stat-value" id="stat-total-leave-days">–</div>
+                <div class="stat-label">Total leave days</div>
+              </div>
+              <div class="card stat-card">
+                <div class="stat-value" id="stat-approved-leaves">–</div>
+                <div class="stat-label">Approved leaves</div>
+              </div>
+              <div class="card stat-card">
+                <div class="stat-value" id="stat-pending-leaves">–</div>
+                <div class="stat-label">Pending leaves</div>
+              </div>
+              <div class="card stat-card">
+                <div class="stat-value" id="stat-overtime-hours">–</div>
+                <div class="stat-label">Overtime hours</div>
+              </div>
+              <div class="card stat-card">
+                <div class="stat-value" id="stat-late-arrivals">–</div>
+                <div class="stat-label">Late arrivals</div>
+              </div>
+              <div class="card stat-card">
+                <div class="stat-value" id="stat-early-checkouts">–</div>
+                <div class="stat-label">Early check-outs</div>
+              </div>
+              <div class="card stat-card">
+                <div class="stat-value" id="stat-avg-daily-hours">–</div>
+                <div class="stat-label">Avg daily hours</div>
+              </div>
+              <div class="card stat-card">
+                <div class="stat-value mono" id="stat-avg-clockin">–</div>
+                <div class="stat-label">Avg clock in time</div>
+              </div>
+              <div class="card stat-card">
+                <div class="stat-value mono" id="stat-avg-clockout">–</div>
+                <div class="stat-label">Avg clock out time</div>
+              </div>
+            </div>
+
+            <!-- SECTION 3: Charts -->
+            <h3 class="analytics-section-title">Charts</h3>
+            <div class="charts-grid">
+              <div class="card chart-card">
+                <h4>Monthly worked hours</h4>
+                <div id="chart-monthly-hours"></div>
+              </div>
+              <div class="card chart-card">
+                <h4>Attendance trend</h4>
+                <div id="chart-attendance-trend"></div>
+              </div>
+              <div class="card chart-card">
+                <h4>Leave trend</h4>
+                <div id="chart-leave-trend"></div>
+              </div>
+              <div class="card chart-card">
+                <h4>Overtime trend</h4>
+                <div id="chart-overtime-trend"></div>
+              </div>
+            </div>
+
+            <!-- SECTION 4: Attendance History -->
+            <h3 class="analytics-section-title">Attendance history</h3>
+            <section class="card history-card">
+              <div class="analytics-toolbar">
+                <input class="input" type="text" id="attendance-search-input" placeholder="Search by date or status…" />
+              </div>
+
+              <div id="attendance-history-empty" class="empty-state" hidden>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                <h3>No attendance records</h3>
+                <p>This employee has no attendance history yet.</p>
+              </div>
+
+              <div id="attendance-history-table-wrap" class="table-wrap" hidden>
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Clock In</th>
+                      <th>Clock Out</th>
+                      <th>Break</th>
+                      <th>Worked Hours</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody id="attendance-history-table-body"></tbody>
+                </table>
+              </div>
+
+              <div class="analytics-pagination">
+                <span id="attendance-pagination-info" class="employees-pagination-info">–</span>
+                <div style="display:flex; gap: var(--space-2);">
+                  <button id="attendance-prev-btn" class="btn btn-secondary btn-sm" type="button">Previous</button>
+                  <button id="attendance-next-btn" class="btn btn-secondary btn-sm" type="button">Next</button>
+                </div>
+              </div>
+            </section>
+
+            <!-- SECTION 5: Leave History -->
+            <h3 class="analytics-section-title">Leave history</h3>
+            <section class="card history-card">
+              <div id="leave-history-empty" class="empty-state" hidden>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                <h3>No leave requests</h3>
+                <p>This employee hasn't submitted any leave requests.</p>
+              </div>
+
+              <div id="leave-history-table-wrap" class="table-wrap" hidden>
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Type</th>
+                      <th>Dates</th>
+                      <th>Reason</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody id="leave-history-table-body"></tbody>
+                </table>
+              </div>
+            </section>
+
+            <!-- SECTION 6: Payroll History -->
+            <h3 class="analytics-section-title">Payroll history</h3>
+            <section class="card history-card">
+              <div id="payroll-history-empty" class="empty-state" hidden>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+                <h3>No payroll records</h3>
+                <p>No payroll has been generated for this employee yet.</p>
+              </div>
+
+              <div id="payroll-history-table-wrap" class="table-wrap" hidden>
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Month</th>
+                      <th>Basic Salary</th>
+                      <th>Overtime</th>
+                      <th>Bonus</th>
+                      <th>Penalty</th>
+                      <th>Tax</th>
+                      <th>Insurance</th>
+                      <th>Net Salary</th>
+                    </tr>
+                  </thead>
+                  <tbody id="payroll-history-table-body"></tbody>
+                </table>
+              </div>
+            </section>
+
+            <!-- SECTION 7: Monthly Statistics -->
+            <h3 class="analytics-section-title">Monthly statistics</h3>
+            <section class="card history-card">
+              <div id="monthly-stats-empty" class="empty-state" hidden>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18"/><path d="M18 17V9"/></svg>
+                <h3>No monthly data yet</h3>
+                <p>Statistics will appear once this employee has attendance, leave, or payroll history.</p>
+              </div>
+
+              <div id="monthly-stats-table-wrap" class="table-wrap" hidden>
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Month</th>
+                      <th>Worked Hours</th>
+                      <th>Attendance</th>
+                      <th>Leaves</th>
+                      <th>Overtime</th>
+                      <th>Salary</th>
+                    </tr>
+                  </thead>
+                  <tbody id="monthly-stats-table-body"></tbody>
+                </table>
+              </div>
+            </section>
+
+            <!-- SECTION 8: Export -->
+            <h3 class="analytics-section-title">Export</h3>
+            <section class="card history-card">
+              <div class="analytics-export-actions">
+                <button id="export-csv-btn" class="btn btn-secondary" type="button">Export CSV</button>
+                <button id="export-excel-btn" class="btn btn-secondary" type="button">Export Excel</button>
+                <button id="export-pdf-btn" class="btn btn-secondary" type="button">Export PDF</button>
+              </div>
+              <p class="reports-filters-hint">CSV exports the full attendance history. Excel includes Employee Info, Attendance, Leaves, Payroll, and Monthly Summary as separate sheets. PDF uses your browser's print layout.</p>
+            </section>
+
+          </div>
+
+        </main>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast-region" role="status" aria-live="polite"></div>
+
+  <script type="module" src="js/pages/employee-analytics.page.js"></script>
+</body>
+</html>
